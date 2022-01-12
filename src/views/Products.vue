@@ -19,14 +19,10 @@ import ProductCard from "@/components/ProductCard";
 export default {
   components: { ProductCard },
   computed: {
-    foods() {
-      return store.foods;
-    },
+    foods: () => store.getProducts(),
   },
   methods: {
-    addToCart(item) {
-      store.cart[item.id] = item;
-    },
+    addToCart: (item) => store.addToCart(item),
   },
 };
 </script>
