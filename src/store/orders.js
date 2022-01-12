@@ -1,9 +1,10 @@
 import { reactive } from 'vue';
+import { session } from './utils';
 
-import orders from './data/orders.json';
+const SESSION_KEY = 'orders';
 
 export default {
-    orders: reactive(orders),
+    orders: reactive(session.get(SESSION_KEY, [])),
 
     /**
      * @returns {object[]}
@@ -18,5 +19,6 @@ export default {
     setOrders(items) {
         this.orders.splice(0, this.orders.length);
         this.orders.push(...items);
+        session.set(SESSION_KEY, this.orders);
     },
 };
