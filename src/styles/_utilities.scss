@@ -1,0 +1,20 @@
+// add extra values to rounded sizes
+$utilities: map-merge(
+    $utilities,
+    (
+        "rounded":
+            map-merge(
+                map-get($utilities, "rounded"),
+                (
+                    values:
+                        map-merge(
+                            map-get(map-get($utilities, "rounded"), "values"),
+                            (
+                                4: $border-radius-xl,
+                                5: $border-radius-xxl,
+                            )
+                        ),
+                )
+            ),
+    )
+);
