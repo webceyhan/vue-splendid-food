@@ -78,33 +78,13 @@ import ProductIcon from "@/components/ProductIcon";
 export default {
   components: { ProductIcon },
   computed: {
-    cart() {
-      return Object.values(store.cart);
-    },
-    total() {
-      return this.cart
-        .reduce((sum, item) => sum + +item.price * item.quantity, 0)
-        .toFixed(2);
-    },
-    isEmpty() {
-      return this.cart.length === 0;
-    },
+    cart: () => store.getCartItems(),
+    total: () => store.getCartTotal(),
+    isEmpty: () => store.isCartEmpty(),
   },
   methods: {
-    removeItem(item) {
-      delete store.cart[item.id];
-    },
-    checkout() {
-      store.orders.splice(0, store.orders.length);
-      store.orders.push(...this.cart);
-
-      // empty cart
-      const keys = Object.keys(store.cart);
-
-      for (let key of keys) {
-        delete store.cart[key];
-      }
-    },
+    removeItem: (item) => store.removeFromCart(item),
+    checkout: () => store.checkout(),
   },
 };
 </script>
