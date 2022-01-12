@@ -46,7 +46,7 @@
               <span class="d-flex align-items-center">
                 <Icon name="cart-alt" sm />
 
-                <span class="ms-2">Cart (0)</span>
+                <span class="ms-2">Cart ({{ cartItemCount }})</span>
               </span>
             </a>
           </li>
@@ -58,8 +58,14 @@
 
 <script>
 import Icon from "./Icon";
+import store from "@/store";
 
 export default {
   components: { Icon },
+  computed: {
+    cartItemCount() {
+      return Object.keys(store.cart).length;
+    },
+  },
 };
 </script>
