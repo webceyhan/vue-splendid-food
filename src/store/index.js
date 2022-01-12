@@ -28,7 +28,18 @@ export default {
     },
 
     // CART ////////////////////////////////////////////////////////////////////////////////////////
+    /**
+     * @param {object}} item
+     */
     addToCart(item) {
         this.cart[item.id] = item;
+    },
+
+    // ORDERS //////////////////////////////////////////////////////////////////////////////////////
+    /**
+     * @returns {Array}
+     */
+    getOrders() {
+        return this.orders;
     },
 };

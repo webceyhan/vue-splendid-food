@@ -49,9 +49,7 @@ import ProductIcon from "@/components/ProductIcon";
 export default {
   components: { Icon, ProductIcon },
   computed: {
-    orders() {
-      return store.orders;
-    },
+    orders: () => store.getOrders(),
   },
 };
 </script>
