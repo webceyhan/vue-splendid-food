@@ -8,17 +8,17 @@
     },
     {
         "id": 2,
-        "name": "Artichokes",
-        "icon": "artichoke",
-        "price": 9.44,
-        "type": "vegetable"
+        "name": "Cherries",
+        "icon": "cherry",
+        "price": 1.0,
+        "type": "fruit"
     },
     {
         "id": 3,
-        "name": "Broccoli",
-        "icon": "broccoli",
-        "price": 5.2,
-        "type": "vegetable"
+        "name": "Steaks",
+        "icon": "steak",
+        "price": 8.32,
+        "type": "meat"
     },
     {
         "id": 5,
@@ -29,10 +29,10 @@
     },
     {
         "id": 6,
-        "name": "Cherries",
-        "icon": "cherry",
-        "price": 1.0,
-        "type": "fruit"
+        "name": "Artichokes",
+        "icon": "artichoke",
+        "price": 9.44,
+        "type": "vegetable"
     },
     {
         "id": 7,
@@ -85,10 +85,10 @@
     },
     {
         "id": 14,
-        "name": "Steaks",
-        "icon": "steak",
-        "price": 8.32,
-        "type": "meat"
+        "name": "Broccoli",
+        "icon": "broccoli",
+        "price": 5.2,
+        "type": "vegetable"
     },
     {
         "id": 15,
