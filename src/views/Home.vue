@@ -13,7 +13,7 @@
 
       <div class="row row-cols-1 row-cols-md-3 g-4">
         <div class="col" v-for="food in recommendedFoods" :key="food.id">
-          <ProductCard :product="food" />
+          <ProductCard :product="food" @addToCart="addToCart($event)" />
         </div>
       </div>
     </div>
@@ -27,7 +27,10 @@ import ProductCard from "@/components/ProductCard";
 export default {
   components: { ProductCard },
   computed: {
-    recommendedFoods:() => store.getRecommendedProducts()
+    recommendedFoods: () => store.getRecommendedProducts(),
+  },
+  methods: {
+    addToCart: (item) => store.addToCart(item),
   },
 };
 </script>
