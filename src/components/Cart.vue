@@ -51,7 +51,10 @@
             <td>${{ item.price * item.quantity }}</td>
 
             <td class="text-end">
-              <button @click="removeItem(item)" class="btn-close btn-sm"></button>
+              <button
+                @click="removeItem(item)"
+                class="btn-close btn-sm"
+              ></button>
             </td>
           </tr>
         </tbody>
@@ -62,7 +65,7 @@
         <div><strong>Total:</strong> ${{ total }}</div>
 
         <!-- checkout button -->
-        <button class="btn btn-primary">Checkout</button>
+        <button @click="checkout" class="btn btn-primary">Checkout</button>
       </div>
     </div>
   </aside>
@@ -88,9 +91,20 @@ export default {
     },
   },
   methods: {
-    removeItem(item){
+    removeItem(item) {
       delete store.cart[item.id];
-    }
-  }
+    },
+    checkout() {
+      store.orders.splice(0, store.orders.length);
+      store.orders.push(...this.cart);
+
+      // empty cart
+      const keys = Object.keys(store.cart);
+
+      for (let key of keys) {
+        delete store.cart[key];
+      }
+    },
+  },
 };
 </script>

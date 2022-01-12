@@ -6,6 +6,6 @@ import cart from './data/cart.json';
 
 export default {
     foods,
-    orders,
+    orders: reactive(orders),
     cart: reactive(cart),
 };
