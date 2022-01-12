@@ -1,28 +1,15 @@
 import { reactive } from 'vue';
 
 import products from './products';
-import orders from './data/orders.json';
+import orders from './orders';
+
 import cart from './data/cart.json';
 
 export default {
     ...products,
-    orders: reactive(orders),
+    ...orders,
+
     cart: reactive(cart),
-
-    // PRODUCTS ////////////////////////////////////////////////////////////////////////////////////
-    // /**
-    //  * @returns {object[]}
-    //  */
-    // getProducts() {
-    //     return foods;
-    // },
-
-    // /**
-    //  * @returns {object[]}
-    //  */
-    // getRecommendedProducts() {
-    //     return shuffle(this.getProducts()).slice(0, 3);
-    // },
 
     // CART ////////////////////////////////////////////////////////////////////////////////////////
     /**
@@ -87,21 +74,5 @@ export default {
     checkout() {
         this.setOrders(this.getCartItems());
         this.clearCart();
-    },
-
-    // ORDERS //////////////////////////////////////////////////////////////////////////////////////
-    /**
-     * @returns {object[]}
-     */
-    getOrders() {
-        return this.orders;
-    },
-
-    /**
-     * @param {object[]} items
-     */
-    setOrders(items) {
-        this.orders.splice(0, this.orders.length);
-        this.orders.push(...items);
     },
 };
