@@ -51,7 +51,7 @@
             <td>${{ item.price * item.quantity }}</td>
 
             <td class="text-end">
-              <button class="btn-close btn-sm"></button>
+              <button @click="removeItem(item)" class="btn-close btn-sm"></button>
             </td>
           </tr>
         </tbody>
@@ -87,5 +87,10 @@ export default {
       return this.cart.length === 0;
     },
   },
+  methods: {
+    removeItem(item){
+      delete store.cart[item.id];
+    }
+  }
 };
 </script>
