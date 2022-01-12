@@ -20,29 +20,15 @@
           </tr>
         </thead>
         <tbody>
-          <tr class="align-middle">
+          <tr class="align-middle" v-for="order in orders" :key="order.id">
             <td>
-              <i class="icofont-carrot icofont-4x text-success"></i>
+              <ProductIcon :product="order" />
+              
             </td>
-            <td>Carrot</td>
-            <td>$1.00</td>
-            <td>1</td>
-            <td>$1.00</td>
-            <td>
-              <button class="btn btn-primary btn-sm d-flex align-items-center">
-                Add
-                <i class="icofont-cart-alt icofont-2x ms-2"></i>
-              </button>
-            </td>
-          </tr>
-          <tr class="align-middle">
-            <td>
-              <i class="icofont-cherry icofont-4x text-danger"> </i>
-            </td>
-            <td>Cherry</td>
-            <td>$0.50</td>
-            <td>10</td>
-            <td>$5.00</td>
+            <td>{{order.name}}</td>
+            <td>${{order.price}}</td>
+            <td>{{order.quantity}}</td>
+            <td>${{order.price * order.quantity}}</td>
             <td>
               <button class="btn btn-primary btn-sm d-flex align-items-center">
                 Add
@@ -50,6 +36,7 @@
               </button>
             </td>
           </tr>
+  
         </tbody>
       </table>
     </div>
@@ -57,5 +44,16 @@
 </template>
 
 <script>
-export default {};
+
+import store from '@/store'
+import ProductIcon from '@/components/ProductIcon'
+
+export default {
+  components:{ProductIcon},
+  computed:{
+    orders(){
+      return store.orders
+    }
+  }
+};
 </script>
