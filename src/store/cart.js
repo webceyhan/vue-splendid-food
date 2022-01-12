@@ -1,8 +1,11 @@
 import { reactive } from 'vue';
+import { session } from './utils';
 import cart from './data/cart.json';
 
+const SESSION_KEY = 'cart';
+
 export default {
-    cart: reactive(cart),
+    cart: reactive(session.get(SESSION_KEY, cart)),
 
     /**
      * @returns {object[]}
@@ -40,6 +43,7 @@ export default {
      */
     addToCart(item) {
         this.cart[item.id] = item;
+        session.set(SESSION_KEY, this.cart);
     },
 
     /**
@@ -47,17 +51,15 @@ export default {
      */
     removeFromCart(item) {
         delete this.cart[item.id];
+        session.set(SESSION_KEY, this.cart);
     },
 
     /**
      *
      */
     clearCart() {
-        const keys = Object.keys(this.cart);
-
-        for (let key of keys) {
-            delete this.cart[key];
-        }
+        Object.keys(this.cart).forEach((key) => delete this.cart[key]);
+        session.set(SESSION_KEY, {});
     },
 
     /**
