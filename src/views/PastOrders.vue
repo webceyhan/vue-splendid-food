@@ -23,20 +23,18 @@
           <tr class="align-middle" v-for="order in orders" :key="order.id">
             <td>
               <ProductIcon :product="order" />
-              
             </td>
-            <td>{{order.name}}</td>
-            <td>${{order.price}}</td>
-            <td>{{order.quantity}}</td>
-            <td>${{order.price * order.quantity}}</td>
+            <td>{{ order.name }}</td>
+            <td>${{ order.price }}</td>
+            <td>{{ order.quantity }}</td>
+            <td>${{ order.price * order.quantity }}</td>
             <td>
               <button class="btn btn-primary btn-sm d-flex align-items-center">
                 Add
-                <i class="icofont-cart-alt icofont-2x ms-2"></i>
+                <Icon name="cart-alt ms-2" sm />
               </button>
             </td>
           </tr>
-  
         </tbody>
       </table>
     </div>
@@ -44,16 +42,16 @@
 </template>
 
 <script>
-
-import store from '@/store'
-import ProductIcon from '@/components/ProductIcon'
+import store from "@/store";
+import Icon from "@/components/Icon";
+import ProductIcon from "@/components/ProductIcon";
 
 export default {
-  components:{ProductIcon},
-  computed:{
-    orders(){
-      return store.orders
-    }
-  }
+  components: { Icon, ProductIcon },
+  computed: {
+    orders() {
+      return store.orders;
+    },
+  },
 };
 </script>

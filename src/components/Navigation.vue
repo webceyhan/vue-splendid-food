@@ -16,7 +16,8 @@
           <li class="nav-item">
             <router-link to="/" class="nav-link">
               <span class="d-flex align-items-center">
-                <i class="icofont-spoon-and-fork icofont-2x"></i>
+                <Icon name="spoon-and-fork" sm />
+
                 <span class="ms-2">Home</span>
               </span>
             </router-link>
@@ -43,7 +44,8 @@
               data-bs-target="#cart"
             >
               <span class="d-flex align-items-center">
-                <i class="icofont-cart-alt icofont-2x"></i>
+                <Icon name="cart-alt" sm />
+
                 <span class="ms-2">Cart (0)</span>
               </span>
             </a>
@@ -53,3 +55,11 @@
     </div>
   </nav>
 </template>
+
+<script>
+import Icon from "./Icon";
+
+export default {
+  components: { Icon },
+};
+</script>

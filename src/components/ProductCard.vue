@@ -28,7 +28,7 @@
           "
         >
           Add
-          <i class="icofont-cart-alt icofont-2x ms-2"></i>
+          <Icon name="cart-alt" sm />
         </button>
       </div>
     </div>
@@ -36,10 +36,11 @@
 </template>
 
 <script>
+import Icon from "./Icon";
 import ProductIcon from "./ProductIcon";
 
 export default {
-  components: { ProductIcon },
+  components: { Icon, ProductIcon },
   props: ["product"],
 };
 </script>
