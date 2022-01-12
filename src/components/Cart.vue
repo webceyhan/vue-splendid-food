@@ -20,10 +20,12 @@
 
     <div class="offcanvas-body bg-light">
       <!-- cart empty message -->
-      <p class="lead text-center p-5"><em>No items in cart</em></p>
+      <p v-if="isEmpty" class="lead text-center p-5">
+        <em>No items in cart</em>
+      </p>
 
       <!-- cart table -->
-      <table class="table table-hover">
+      <table v-else class="table table-hover">
         <thead>
           <tr>
             <th>
@@ -39,26 +41,15 @@
           </tr>
         </thead>
         <tbody>
-          <tr class="align-middle">
+          <tr class="align-middle" v-for="item in cart" :key="item.id">
             <td>
-              <i class="icofont-carrot icofont-2x text-success"></i>
+              <ProductIcon :product="item" sm />
             </td>
-            <td>Carrot</td>
-            <td>$1.00</td>
-            <td class="text-center">1</td>
-            <td>$1.00</td>
-            <td class="text-end">
-              <button class="btn-close btn-sm"></button>
-            </td>
-          </tr>
-          <tr class="align-middle">
-            <td>
-              <i class="icofont-pineapple icofont-2x text-danger"></i>
-            </td>
-            <td>Pineapple</td>
-            <td>$1.50</td>
-            <td class="text-center">1</td>
-            <td>$1.00</td>
+            <td>{{ item.name }}</td>
+            <td>${{ item.price }}</td>
+            <td>{{ item.quantity }}</td>
+            <td>${{ item.price * item.quantity }}</td>
+
             <td class="text-end">
               <button class="btn-close btn-sm"></button>
             </td>
@@ -68,7 +59,7 @@
 
       <div class="d-flex align-items-center justify-content-between pt-2">
         <!-- cart total -->
-        <div><strong>Total:</strong> $1.00</div>
+        <div><strong>Total:</strong> ${{ total }}</div>
 
         <!-- checkout button -->
         <button class="btn btn-primary">Checkout</button>
@@ -76,3 +67,25 @@
     </div>
   </aside>
 </template>
+
+<script>
+import store from "@/store";
+import ProductIcon from "@/components/ProductIcon";
+
+export default {
+  components: { ProductIcon },
+  computed: {
+    cart() {
+      return Object.values(store.cart);
+    },
+    total() {
+      return this.cart
+        .reduce((sum, item) => sum + +item.price * item.quantity, 0)
+        .toFixed(2);
+    },
+    isEmpty() {
+      return this.cart.length === 0;
+    },
+  },
+};
+</script>
