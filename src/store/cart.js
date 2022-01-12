@@ -1,11 +1,10 @@
 import { reactive } from 'vue';
 import { session } from './utils';
-import cart from './data/cart.json';
 
 const SESSION_KEY = 'cart';
 
 export default {
-    cart: reactive(session.get(SESSION_KEY, cart)),
+    cart: reactive(session.get(SESSION_KEY)),
 
     /**
      * @returns {object[]}
