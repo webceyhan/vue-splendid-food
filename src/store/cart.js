@@ -4,7 +4,7 @@ import { session } from './utils';
 const SESSION_KEY = 'cart';
 
 export default {
-    cart: reactive(session.get(SESSION_KEY)),
+    cart: reactive(session.get(SESSION_KEY, {})),
 
     /**
      * @returns {object[]}
