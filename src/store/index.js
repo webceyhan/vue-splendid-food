@@ -1,31 +1,28 @@
 import { reactive } from 'vue';
 
-import foods from './data/foods.json';
+import products from './products';
 import orders from './data/orders.json';
 import cart from './data/cart.json';
 
-// Utils
-export const shuffle = (arr) => arr.sort(() => 0.5 - Math.random());
-
 export default {
-    foods,
+    ...products,
     orders: reactive(orders),
     cart: reactive(cart),
 
     // PRODUCTS ////////////////////////////////////////////////////////////////////////////////////
-    /**
-     * @returns {object[]}
-     */
-    getProducts() {
-        return foods;
-    },
+    // /**
+    //  * @returns {object[]}
+    //  */
+    // getProducts() {
+    //     return foods;
+    // },
 
-    /**
-     * @returns {object[]}
-     */
-    getRecommendedProducts() {
-        return shuffle(this.getProducts()).slice(0, 3);
-    },
+    // /**
+    //  * @returns {object[]}
+    //  */
+    // getRecommendedProducts() {
+    //     return shuffle(this.getProducts()).slice(0, 3);
+    // },
 
     // CART ////////////////////////////////////////////////////////////////////////////////////////
     /**
