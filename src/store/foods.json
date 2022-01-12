@@ -1,0 +1,107 @@
+[
+    {
+        "id": 1,
+        "name": "Raddishes",
+        "icon": "raddish",
+        "price": 3.26,
+        "type": "vegetable"
+    },
+    {
+        "id": 2,
+        "name": "Artichokes",
+        "icon": "artichoke",
+        "price": 9.44,
+        "type": "vegetable"
+    },
+    {
+        "id": 3,
+        "name": "Broccoli",
+        "icon": "broccoli",
+        "price": 5.2,
+        "type": "vegetable"
+    },
+    {
+        "id": 5,
+        "name": "Cabbages",
+        "icon": "cabbage",
+        "price": 0.95,
+        "type": "vegetable"
+    },
+    {
+        "id": 6,
+        "name": "Cherries",
+        "icon": "cherry",
+        "price": 1.0,
+        "type": "fruit"
+    },
+    {
+        "id": 7,
+        "name": "Carrots",
+        "icon": "carrot",
+        "price": 4.82,
+        "type": "vegetable"
+    },
+    {
+        "id": 8,
+        "name": "Corn",
+        "icon": "corn",
+        "price": 7.53,
+        "type": "vegetable"
+    },
+    {
+        "id": 9,
+        "name": "Grapes",
+        "icon": "grapes",
+        "price": 4.94,
+        "type": "fruit"
+    },
+    {
+        "id": 10,
+        "name": "Onions",
+        "icon": "onion",
+        "price": 6.45,
+        "type": "vegetable"
+    },
+    {
+        "id": 11,
+        "name": "Oranges",
+        "icon": "orange",
+        "price": 9.95,
+        "type": "fruit"
+    },
+    {
+        "id": 12,
+        "name": "Peas",
+        "icon": "peas",
+        "price": 2.61,
+        "type": "vegetable"
+    },
+    {
+        "id": 13,
+        "name": "Pineapples",
+        "icon": "pineapple",
+        "price": 1.62,
+        "type": "fruit"
+    },
+    {
+        "id": 14,
+        "name": "Steaks",
+        "icon": "steak",
+        "price": 8.32,
+        "type": "meat"
+    },
+    {
+        "id": 15,
+        "name": "Watermelons",
+        "icon": "watermelon",
+        "price": 5.08,
+        "type": "fruit"
+    },
+    {
+        "id": 16,
+        "name": "Sausages",
+        "icon": "sausage",
+        "price": 3.69,
+        "type": "meat"
+    }
+]
