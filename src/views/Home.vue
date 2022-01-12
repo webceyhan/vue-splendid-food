@@ -27,9 +27,7 @@ import ProductCard from "@/components/ProductCard";
 export default {
   components: { ProductCard },
   computed: {
-    recommendedFoods() {
-      return store.foods.slice(0, 3);
-    },
+    recommendedFoods:() => store.getRecommendedProducts()
   },
 };
 </script>
