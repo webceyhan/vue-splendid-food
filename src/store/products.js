@@ -3,13 +3,18 @@ import { shuffle } from './utils';
 
 export default {
     /**
+     *
+     * @param {string?} filter
      * @returns {object[]}
      */
-    getProducts() {
-        return foods;
+    getProducts(filter = null) {
+        if (!filter || filter === 'all') return foods;
+
+        return foods.filter(({ type }) => type === filter);
     },
 
     /**
+     *
      * @returns {object[]}
      */
     getRecommendedProducts() {

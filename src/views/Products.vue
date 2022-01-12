@@ -47,13 +47,7 @@ export default {
   computed: {
     productTypes: () => store.getProductTypes(),
     products() {
-      if (this.productType === "all") {
-        return store.getProducts();
-      }
-
-      return store
-        .getProducts()
-        .filter(({ type }) => type === this.productType);
+      return store.getProducts(this.productType);
     },
   },
   methods: {
