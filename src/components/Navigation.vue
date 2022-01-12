@@ -63,9 +63,7 @@ import store from "@/store";
 export default {
   components: { Icon },
   computed: {
-    cartItemCount() {
-      return Object.keys(store.cart).length;
-    },
+    cartItemCount: () => store.getCartItemCount(),
   },
 };
 </script>

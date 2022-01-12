@@ -36,6 +36,14 @@ export default {
     },
 
     /**
+     *
+     * @returns {number}
+     */
+    getCartItemCount() {
+        return Object.keys(this.cart).length;
+    },
+
+    /**
      * @returns {number}
      */
     getCartTotal() {
