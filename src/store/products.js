@@ -15,4 +15,17 @@ export default {
     getRecommendedProducts() {
         return shuffle(foods).slice(0, 3);
     },
+
+    /**
+     *
+     * @returns {string[]}
+     */
+    getProductTypes() {
+        return [
+            'all',
+            ...Object.keys(
+                foods.reduce((all, { type }) => ({ ...all, [type]: null }), {})
+            ),
+        ];
+    },
 };
