@@ -1,7 +1,7 @@
 <template>
   <div class="card bg-dark text-white rounded-5">
     <div class="card-image-top text-center pt-3">
-      <i :class="`icofont-10x icofont-${product.icon} text-success`"></i>
+      <Icon :name="product.icon" lg />
     </div>
 
     <div class="card-body p-4">
@@ -36,8 +36,11 @@
 </template>
 
 <script>
+import Icon from "./Icon";
+
 export default {
-    props:['product']
+  components: { Icon },
+  props: ["product"],
 };
 </script>
 
