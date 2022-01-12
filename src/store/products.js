@@ -1,7 +1,5 @@
 import foods from './data/foods.json';
-
-// Utils
-const shuffle = (arr) => arr.sort(() => 0.5 - Math.random());
+import { shuffle } from './utils';
 
 export default {
     /**
