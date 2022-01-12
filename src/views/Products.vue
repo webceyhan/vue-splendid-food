@@ -5,7 +5,7 @@
 
       <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 row-cols-xl-4 g-4">
         <div class="col" v-for="food in foods" :key="food.id">
-          <ProductCard :product="food" />
+          <ProductCard :product="food" @addToCart="addToCart($event)" />
         </div>
       </div>
     </div>
@@ -21,6 +21,11 @@ export default {
   computed: {
     foods() {
       return store.foods;
+    },
+  },
+  methods: {
+    addToCart(item) {
+      store.cart[item.id] = item;
     },
   },
 };

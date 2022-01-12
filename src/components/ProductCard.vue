@@ -17,8 +17,9 @@
       </dl>
 
       <div class="input-group input-group-sm">
-        <input type="number" class="form-control" value="1" />
+        <input type="number" class="form-control" v-model="quantity" />
         <button
+          @click="addToCart"
           class="
             btn btn-primary
             d-flex
@@ -41,7 +42,17 @@ import ProductIcon from "./ProductIcon";
 
 export default {
   components: { Icon, ProductIcon },
+  emits: ["addToCart"],
   props: ["product"],
+  data() {
+    return { quantity: 1 };
+  },
+  methods: {
+    addToCart() {
+      this.$emit("addToCart", { ...this.product, quantity: this.quantity });
+      this.quantity = 1; // reset
+    },
+  },
 };
 </script>
 

@@ -2,7 +2,6 @@
   <Navigation />
 
   <Cart />
-
   <router-view />
 </template>
 
