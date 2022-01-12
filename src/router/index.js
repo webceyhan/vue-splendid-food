@@ -34,4 +34,14 @@ const router = createRouter({
     history: createWebHistory(process.env.BASE_URL),
 });
 
+/**
+ * Handle page title refresh on navigation
+ */
+const TITLE = 'Splendid Food';
+
+router.beforeEach((to, from, next) => {
+    document.title = `${TITLE} - ${to.name}`;
+    next();
+});
+
 export default router;
