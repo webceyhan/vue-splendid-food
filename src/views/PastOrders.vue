@@ -29,7 +29,10 @@
             <td>{{ order.quantity }}</td>
             <td>${{ order.price * order.quantity }}</td>
             <td>
-              <button class="btn btn-primary btn-sm d-flex align-items-center">
+              <button
+                class="btn btn-primary btn-sm d-flex align-items-center"
+                @click="addToCart(order)"
+              >
                 Add
                 <Icon name="cart-alt ms-2" sm />
               </button>
@@ -50,6 +53,9 @@ export default {
   components: { Icon, ProductIcon },
   computed: {
     orders: () => store.getOrders(),
+  },
+  methods: {
+    addToCart: (item) => store.addToCart(item),
   },
 };
 </script>
