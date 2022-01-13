@@ -16,7 +16,7 @@
 </template>
 
 <script>
-import store from "@/store";
+import { mapGetters, mapMutations } from "vuex";
 import Filter from "@/components/Filter";
 import ProductCard from "@/components/ProductCard";
 
@@ -26,13 +26,16 @@ export default {
     return { productType: "all" };
   },
   computed: {
-    productTypes: () => store.getProductTypes(),
+    ...mapGetters("products", {
+      productTypes: "getTypes",
+      productsByType: "getByType",
+    }),
     products() {
-      return store.getProducts(this.productType);
+      return this.productsByType(this.productType);
     },
   },
-  methods: {
-    addToCart: (item) => store.addToCart(item),
-  },
+  methods: mapMutations("cart", {
+    addToCart: "addItem",
+  }),
 };
 </script>

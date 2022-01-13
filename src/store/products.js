@@ -1,36 +1,31 @@
-import foods from './data/foods.json';
-import { shuffle } from './utils';
+import foods from "./data/foods.json";
+import { shuffle } from "./utils";
+
+// initial state
+const state = () => ({
+    all: [...foods],
+});
+
+// getters
+const getters = {
+    getTypes: (state) => [
+        "all",
+        ...Object.keys(
+            state.all.reduce((all, { type }) => ({ ...all, [type]: null }), {})
+        ),
+    ],
+
+    getByType: (state) => (type) => {
+        if (!type || type === "all") return state.all;
+
+        return state.all.filter((item) => item.type === type);
+    },
+
+    getRecommended: (state) => shuffle(state.all).slice(0, 3),
+};
 
 export default {
-    /**
-     *
-     * @param {string?} filter
-     * @returns {object[]}
-     */
-    getProducts(filter = null) {
-        if (!filter || filter === 'all') return foods;
-
-        return foods.filter(({ type }) => type === filter);
-    },
-
-    /**
-     *
-     * @returns {object[]}
-     */
-    getRecommendedProducts() {
-        return shuffle(foods).slice(0, 3);
-    },
-
-    /**
-     *
-     * @returns {string[]}
-     */
-    getProductTypes() {
-        return [
-            'all',
-            ...Object.keys(
-                foods.reduce((all, { type }) => ({ ...all, [type]: null }), {})
-            ),
-        ];
-    },
+    namespaced: true,
+    state,
+    getters,
 };

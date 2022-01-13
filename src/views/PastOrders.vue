@@ -45,17 +45,17 @@
 </template>
 
 <script>
-import store from "@/store";
+import { mapMutations, mapState } from "vuex";
 import Icon from "@/components/Icon";
 import ProductIcon from "@/components/ProductIcon";
 
 export default {
   components: { Icon, ProductIcon },
-  computed: {
-    orders: () => store.getOrders(),
-  },
-  methods: {
-    addToCart: (item) => store.addToCart(item),
-  },
+  computed: mapState("orders", {
+    orders: (state) => state.items,
+  }),
+  methods: mapMutations("cart", {
+    addToCart: "addItem",
+  }),
 };
 </script>

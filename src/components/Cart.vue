@@ -72,19 +72,19 @@
 </template>
 
 <script>
-import store from "@/store";
+import { mapActions, mapGetters, mapMutations } from "vuex";
 import ProductIcon from "@/components/ProductIcon";
 
 export default {
   components: { ProductIcon },
-  computed: {
-    cart: () => store.getCartItems(),
-    total: () => store.getCartTotal(),
-    isEmpty: () => store.isCartEmpty(),
-  },
+  computed: mapGetters("cart", {
+    cart: "getItems",
+    total: "getTotal",
+    isEmpty: "isEmpty",
+  }),
   methods: {
-    removeItem: (item) => store.removeFromCart(item),
-    checkout: () => store.checkout(),
+    ...mapMutations("cart", ["removeItem"]),
+    ...mapActions("cart", ["checkout"]),
   },
 };
 </script>

@@ -21,16 +21,16 @@
 </template>
 
 <script>
-import store from "@/store";
+import { mapGetters, mapMutations } from "vuex";
 import ProductCard from "@/components/ProductCard";
 
 export default {
   components: { ProductCard },
-  computed: {
-    recommendedFoods: () => store.getRecommendedProducts(),
-  },
-  methods: {
-    addToCart: (item) => store.addToCart(item),
-  },
+  computed: mapGetters("products", {
+    recommendedFoods: "getRecommended",
+  }),
+  methods: mapMutations("cart", {
+    addToCart: "addItem",
+  }),
 };
 </script>

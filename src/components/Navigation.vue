@@ -57,13 +57,13 @@
 </template>
 
 <script>
+import { mapGetters } from "vuex";
 import Icon from "./Icon";
-import store from "@/store";
 
 export default {
   components: { Icon },
-  computed: {
-    cartItemCount: () => store.getCartItemCount(),
-  },
+  computed: mapGetters("cart", {
+    cartItemCount: "getItemCount",
+  }),
 };
 </script>

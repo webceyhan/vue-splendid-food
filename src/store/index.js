@@ -1,9 +1,13 @@
-import products from './products';
-import orders from './orders';
-import cart from './cart';
+import { createStore } from "vuex";
 
-export default {
-    ...products,
-    ...orders,
-    ...cart,
-};
+import products from "./products";
+import orders from "./orders";
+import cart from "./cart";
+
+export default createStore({
+    modules: {
+        products,
+        orders,
+        cart,
+    },
+});

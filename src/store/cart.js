@@ -1,71 +1,56 @@
-import { reactive } from 'vue';
-import { session } from './utils';
+import { session } from "./utils";
 
-const SESSION_KEY = 'cart';
+const SESSION_KEY = "cart";
 
-export default {
-    cart: reactive(session.get(SESSION_KEY, {})),
+// initial state
+const state = () => ({
+    cart: { ...session.get(SESSION_KEY, {}) },
+});
 
-    /**
-     * @returns {object[]}
-     */
-    getCartItems() {
-        return Object.values(this.cart);
-    },
+// getters
+const getters = {
+    getItems: (state) => Object.values(state.cart),
 
-    /**
-     *
-     * @returns {number}
-     */
-    getCartItemCount() {
-        return Object.keys(this.cart).length;
-    },
+    getItemCount: (state) => Object.keys(state.cart).length,
 
-    /**
-     * @returns {number}
-     */
-    getCartTotal() {
-        return this.getCartItems()
+    getTotal: (state, getters) =>
+        getters.getItems
             .reduce((sum, item) => sum + +item.price * item.quantity, 0)
-            .toFixed(2);
+            .toFixed(2),
+
+    isEmpty: (state, getters) => getters.getItemCount === 0,
+};
+
+// mutations
+const mutations = {
+    addItem(state, item) {
+        state.cart[item.id] = item;
+        session.set(SESSION_KEY, state.cart);
     },
 
-    /**
-     * @returns {bool}
-     */
-    isCartEmpty() {
-        return this.getCartItems().length === 0;
+    removeItem(state, item) {
+        delete state.cart[item.id];
+        session.set(SESSION_KEY, state.cart);
     },
 
-    /**
-     * @param {object} item
-     */
-    addToCart(item) {
-        this.cart[item.id] = item;
-        session.set(SESSION_KEY, this.cart);
-    },
-
-    /**
-     * @param {object} item
-     */
-    removeFromCart(item) {
-        delete this.cart[item.id];
-        session.set(SESSION_KEY, this.cart);
-    },
-
-    /**
-     *
-     */
-    clearCart() {
-        Object.keys(this.cart).forEach((key) => delete this.cart[key]);
+    clear(state) {
+        Object.keys(state.cart).forEach((key) => delete state.cart[key]);
         session.set(SESSION_KEY, {});
     },
+};
 
-    /**
-     *
-     */
-    checkout() {
-        this.setOrders(this.getCartItems());
-        this.clearCart();
+// actions
+const actions = {
+    checkout({ commit, getters }) {
+        commit("orders/setItems", getters.getItems, { root: true });
+        commit("clear");
     },
+};
+
+export default {
+    namespaced: true,
+    state,
+    getters,
+    mutations,
+    actions,
 };
