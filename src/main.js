@@ -4,6 +4,6 @@ import router from './router';
 
 // Bootstrap
 import 'bootstrap';
-import './assets/styles/style.scss';
+import './assets/styles/main.scss';
 
 createApp(App).use(router).mount('#app');
