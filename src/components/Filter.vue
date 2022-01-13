@@ -1,17 +1,20 @@
 <template>
   <div class="btn-group" role="group">
-    <template v-for="(option, i) in options" :key="i">
+    <template v-for="(option, i) in prefixedOptions" :key="i">
       <input
         type="radio"
         class="btn-check"
         name="filter"
         :id="`filter-${i}`"
-        :value="option"
+        :value="option != 'all' ? option : null"
         :checked="option === modelValue"
         @change="$emit('update:modelValue', option)"
         autocomplete="off"
       />
-      <label :for="`filter-${i}`" class="btn btn-outline-primary">
+      <label
+        :for="`filter-${i}`"
+        class="btn btn-outline-primary text-capitalize"
+      >
         {{ option }}
       </label>
     </template>
@@ -23,11 +26,8 @@ export default {
   emits: ["update:modelValue"],
   props: ["modelValue", "options"],
   computed: {
-    size() {
-      return this.sm ? 2 : this.lg ? 10 : 4;
-    },
-    classes() {
-      return `icofont-${this.name} icofont-${this.size}x`;
+    prefixedOptions() {
+      return ["all", ...this.options];
     },
   },
 };
