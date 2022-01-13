@@ -1,4 +1,4 @@
-import { session } from "./utils";
+import { session } from "../utils";
 
 const SESSION_KEY = "cart";
 
@@ -34,15 +34,15 @@ const mutations = {
     },
 
     clear(state) {
-        Object.keys(state.cart).forEach((key) => delete state.cart[key]);
+        state.cart = {};
         session.set(SESSION_KEY, {});
     },
 };
 
 // actions
 const actions = {
-    checkout({ commit, getters }) {
-        commit("orders/setItems", getters.getItems, { root: true });
+    async checkout({ commit, getters, dispatch }) {
+        await dispatch("orders/makeOrders", getters.getItems, { root: true });
         commit("clear");
     },
 };

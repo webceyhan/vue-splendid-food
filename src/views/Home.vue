@@ -12,8 +12,8 @@
       <h1 class="mb-3">Recommended</h1>
 
       <div class="row row-cols-1 row-cols-md-3 g-4">
-        <div class="col" v-for="food in recommendedFoods" :key="food.id">
-          <ProductCard :product="food" @addToCart="addToCart($event)" />
+        <div class="col" v-for="product in products" :key="product.id">
+          <ProductCard :product="product" @addToCart="addToCart($event)" />
         </div>
       </div>
     </div>
@@ -21,16 +21,19 @@
 </template>
 
 <script>
-import { mapGetters, mapMutations } from "vuex";
+import { mapMutations, mapState } from "vuex";
 import ProductCard from "@/components/ProductCard";
 
 export default {
   components: { ProductCard },
-  computed: mapGetters("products", {
-    recommendedFoods: "getRecommended",
+  computed: mapState("products", {
+    products: "all",
   }),
   methods: mapMutations("cart", {
     addToCart: "addItem",
   }),
+  created() {
+    this.$store.dispatch("products/loadRecommendedProducts");
+  },
 };
 </script>

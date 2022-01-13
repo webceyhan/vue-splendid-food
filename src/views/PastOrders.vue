@@ -52,10 +52,13 @@ import ProductIcon from "@/components/ProductIcon";
 export default {
   components: { Icon, ProductIcon },
   computed: mapState("orders", {
-    orders: (state) => state.items,
+    orders: "items",
   }),
   methods: mapMutations("cart", {
     addToCart: "addItem",
   }),
+  created() {
+    this.$store.dispatch("orders/loadOrders");
+  },
 };
 </script>

@@ -1,31 +1,43 @@
-import foods from "./data/foods.json";
-import { shuffle } from "./utils";
+import shop from "../api/shop";
 
 // initial state
 const state = () => ({
-    all: [...foods],
+    all: [],
+    types: [],
 });
 
-// getters
-const getters = {
-    getTypes: (state) => [
-        "all",
-        ...Object.keys(
-            state.all.reduce((all, { type }) => ({ ...all, [type]: null }), {})
-        ),
-    ],
-
-    getByType: (state) => (type) => {
-        if (!type || type === "all") return state.all;
-
-        return state.all.filter((item) => item.type === type);
+// muations
+const mutations = {
+    setTypes(state, types) {
+        state.types = types;
     },
 
-    getRecommended: (state) => shuffle(state.all).slice(0, 3),
+    setProducts(state, products) {
+        state.all = products;
+    },
+};
+
+// actions
+const actions = {
+    async loadTypes({ commit }) {
+        const types = await shop.getTypes();
+        commit("setTypes", types);
+    },
+
+    async loadProducts({ commit }, type) {
+        const products = await shop.getProducts(type);
+        commit("setProducts", products);
+    },
+
+    async loadRecommendedProducts({ commit }) {
+        const products = await shop.getRecommendedProducts();
+        commit("setProducts", products);
+    },
 };
 
 export default {
     namespaced: true,
     state,
-    getters,
+    mutations,
+    actions,
 };

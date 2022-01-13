@@ -1,15 +1,8 @@
-/**
- * 
- * @param {[]} arr 
- * @returns 
- */
-export const shuffle = (arr) => arr.sort(() => 0.5 - Math.random());
-
 export const session = {
     /**
-     * 
-     * @param {string} key 
-     * @param {*} defaultValue 
+     *
+     * @param {string} key
+     * @param {*} defaultValue
      * @returns {*}
      */
     get(key, defaultValue) {
@@ -19,9 +12,9 @@ export const session = {
     },
 
     /**
-     * 
-     * @param {string} key 
-     * @param {object} item 
+     *
+     * @param {string} key
+     * @param {object} item
      */
     set(key, item) {
         const rawItem = JSON.stringify(item);
@@ -30,7 +23,7 @@ export const session = {
     },
 
     /**
-     * 
+     *
      */
     clear() {
         localStorage.clear();
