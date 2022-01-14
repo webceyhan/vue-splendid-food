@@ -1,4 +1,4 @@
-import foods from "./data/foods.json";
+import foods from "./data.json";
 import { shuffle, uniqueByKey } from "../utils";
 
 export default {
