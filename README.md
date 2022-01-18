@@ -1,3 +1,5 @@
+[![Deploy to Firebase Hosting on merge](https://github.com/webceyhan/vue-splendid-food/actions/workflows/firebase-hosting-merge.yml/badge.svg)](https://github.com/webceyhan/vue-splendid-food/actions/workflows/firebase-hosting-merge.yml)
+
 # vue-splendid-food
 
 ## Project setup
