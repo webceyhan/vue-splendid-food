@@ -1,4 +1,5 @@
-[![Deploy to Firebase Hosting on merge](https://github.com/webceyhan/vue-splendid-food/actions/workflows/firebase-hosting-merge.yml/badge.svg)](https://github.com/webceyhan/vue-splendid-food/actions/workflows/firebase-hosting-merge.yml)
+[![CodeQL](https://github.com/webceyhan/vue-splendid-food/actions/workflows/codeql-analysis.yml/badge.svg)](https://github.com/webceyhan/vue-splendid-food/actions/workflows/codeql-analysis.yml)
+[![Deploy to Firebase](https://github.com/webceyhan/vue-splendid-food/actions/workflows/firebase.yml/badge.svg)](https://github.com/webceyhan/vue-splendid-food/actions/workflows/firebase.yml)
 
 # vue-splendid-food
 
