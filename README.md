@@ -114,19 +114,20 @@ A GitHub Action will automatically deploy the project to Firebase on every push.
 
     ```sh
     firebase init
-    # choose Hosting: Configure files for Firebase Hosting and (optionally) st up GitHub Action deploys
+    
+    # Configure files for Firebase Hosting and (optionally) st up GitHub Action deploys
 
-    # ? What do you want to use as your public directory? dist
+        # ? What do you want to use as your public directory? dist
 
-    # ? Configure as a single-page app (rewrite all urls to /index.html)? Yes
+        # ? Configure as a single-page app (rewrite all urls to /index.html)? Yes
 
-    # ? Set up automatic builds and deploys with GitHub? Yes
+        # ? Set up automatic builds and deploys with GitHub? Yes
 
-    # ? File dist/index.html already exists. Overwrite? No
+        # ? File dist/index.html already exists. Overwrite? No
 
-    # ? For which GitHub repository would you like to set up a GitHub workflow? (format: user/repository) webceyhan/vue-splendid-food
+        # ? For which GitHub repository would you like to set up a GitHub workflow? (format: user/repository) webceyhan/vue-splendid-food
 
-    # ? Set up the workflow to run a build script before every deploy? Yes
+        # ? Set up the workflow to run a build script before every deploy? Yes
     ```
 
     > This will create a new application on Firebase cloud, a firebase.json configuration for hosting and a GitHub Action for deployment, inside your project folder.
